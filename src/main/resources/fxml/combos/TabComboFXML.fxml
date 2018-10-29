@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="paneRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cashf.controller.combos.TabComboFXMLController">
+   <children>
+      <Pane layoutX="10.0" layoutY="20.0" prefHeight="490.0" prefWidth="640.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Pane prefHeight="20.0" prefWidth="640.0" style="-fx-background-color: #0081cb;">
+               <children>
+                  <Label layoutX="5.0" layoutY="2.0" text="Produtos do Combo:" textFill="WHITE" />
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Pane prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #0081cb;">
+                     <children>
+                        <Label layoutX="5.0" layoutY="2.0" text="Seleção de Ítens Agregados:" textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Text layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos da etapa:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtEtapa" layoutX="206.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <VBox layoutX="14.0" layoutY="71.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="74.0" prefWidth="386.0" spacing="15.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <JFXTextField fx:id="txtPesquisar" focusColor="#004ba0" labelFloat="true" onKeyReleased="#onKeyReleasedPesquisar" prefHeight="24.0" prefWidth="386.0" promptText="Descrição do produto" />
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="386.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label text="Filtrar:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <JFXRadioButton fx:id="rbtCodigo" style="-jfx-selected-color: #69e2ff;" text="Código">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="6.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rbtDescricao" style="-jfx-selected-color: #69e2ff;" text="Descrição">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="6.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rbtGrupo" style="-jfx-selected-color: #69e2ff;" text="Grupo">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="6.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="rbtTodos" layoutX="271.0" layoutY="16.0" style="-jfx-selected-color: #69e2ff;" text="Todos">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="6.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <JFXTextField fx:id="txtqtde" focusColor="#004ba0" labelFloat="true" layoutX="501.0" layoutY="73.0" prefHeight="26.0" prefWidth="81.0" promptText="Quantidade" />
+                  <JFXButton fx:id="btnAdicionar" contentDisplay="GRAPHIC_ONLY" layoutX="544.0" layoutY="186.0" onAction="#onAdicionar" prefHeight="30.0" prefWidth="40.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="12" />
+                     </graphic>
+                  </JFXButton>
+                  <Separator layoutX="14.0" layoutY="167.0" prefWidth="570.0" />
+                  <JFXButton fx:id="btnFinalizarEtapa" layoutX="14.0" layoutY="188.0" onAction="#onFinalizarEtapa" prefHeight="30.0" prefWidth="152.0" ripplerFill="WHITE" style="-fx-background-color: #00e676;" text="Finalizar etapa:" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CART_PLUS" size="18" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnConcluirSel" layoutX="185.0" layoutY="188.0" onAction="#onConcluirSel" prefHeight="30.0" prefWidth="152.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Concluir Seleção" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CART_ARROW_DOWN" size="18" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="txtValor" focusColor="#004ba0" labelFloat="true" layoutX="501.0" layoutY="120.0" prefHeight="26.0" prefWidth="81.0" promptText="Valor " />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+            <TableView fx:id="tbvProdutos" layoutX="20.0" layoutY="291.0" onMouseClicked="#onSelecionarProduto" prefHeight="180.0" prefWidth="600.0" stylesheets="@../../styles/TableViewCSS.css">
+               <columns>
+                  <TableColumn fx:id="tbcCodRef" prefWidth="69.0" text="Cod_Ref" />
+                  <TableColumn fx:id="tbcDescricao" prefWidth="297.0" text="Descrição" />
+                  <TableColumn fx:id="tbcTipo" prefWidth="104.0" text="Tipo" />
+                  <TableColumn fx:id="tbcQtde" prefWidth="129.0" text="Grupo" />
+               </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="668.0" layoutY="20.0" prefHeight="490.0" prefWidth="640.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <JFXComboBox fx:id="cbbProduto" editable="true" labelFloat="true" layoutX="14.0" layoutY="37.0" onAction="#onSelecionarProdPrincipal" prefHeight="26.0" prefWidth="330.0" promptText="Produto Principal" />
+            <JFXTextField fx:id="txtValVenda" focusColor="#004ba0" labelFloat="true" layoutX="208.0" layoutY="106.0" prefHeight="26.0" prefWidth="135.0" promptText="Valor de venda" />
+            <HBox alignment="CENTER" layoutX="16.0" layoutY="409.0" prefHeight="68.0" prefWidth="608.0">
+               <children>
+                  <JFXButton fx:id="btnSalvar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#onSalvar" prefHeight="36.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="24" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnNovo" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" onAction="#onNovo" prefHeight="36.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #00e676;" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="24" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnExcluir" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="100.0" layoutY="10.0" onAction="#onExcluir" prefHeight="36.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #d32f2f;" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="24" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnLimpar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="10.0" onAction="#onLimpar" prefHeight="36.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #00251a;" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="ERASER" size="24" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <JFXRadioButton fx:id="rbtCod" layoutX="415.0" layoutY="68.0" style="-jfx-selected-color: #69e2ff;" text="Código" />
+            <JFXRadioButton fx:id="rbtDesc" layoutX="501.0" layoutY="68.0" style="-jfx-selected-color: #69e2ff;" text="Descrição" />
+            <Label layoutX="393.0" layoutY="41.0" text="Filtros:" />
+            <Label fx:id="lblCustoTotal" layoutX="539.0" layoutY="340.0" prefHeight="16.0" prefWidth="78.0" textFill="#d32f2f">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="20.0" prefWidth="640.0" style="-fx-background-color: #0081cb;">
+               <children>
+                  <Label layoutX="5.0" layoutY="2.0" text="Combo:" textFill="WHITE" />
+               </children>
+            </Pane>
+            <TableView fx:id="tbvItens" layoutX="14.0" layoutY="161.0" prefHeight="230.0" prefWidth="608.0" stylesheets="@../../styles/TableViewCSS.css">
+               <columns>
+                  <TableColumn fx:id="tbcItem" prefWidth="369.0" text="Produtos Agregados" />
+                  <TableColumn fx:id="tbcQtdIten" minWidth="9.0" prefWidth="55.0" text="Qtde." />
+                  <TableColumn fx:id="tbcCustoItem" prefWidth="61.0" text="Custo" />
+                  <TableColumn fx:id="tbcEtapa" minWidth="9.0" prefWidth="56.0" text="Etapa" />
+                  <TableColumn fx:id="btnExcluirItem" minWidth="9.0" prefWidth="66.0" text="Excluir" />
+               </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TableView>
+            <JFXTextField fx:id="txtValCusto" focusColor="#004ba0" labelFloat="true" layoutX="14.0" layoutY="106.0" prefHeight="26.0" prefWidth="135.0" promptText="Custo total" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
